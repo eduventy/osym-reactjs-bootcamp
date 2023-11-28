@@ -1,16 +1,24 @@
 'use client'
 import {useState} from 'react'
+import { useDispatch } from 'react-redux'
+
+import { addTask } from '@/redux/slice/TodoSlice'
+
+
 import styles from './form.module.css'
 
-export default function TodoForm({handleAddTodo}){
+export default function TodoForm(){
 
     const [formData, setFormData] = useState({
-        text: ''
+        text: '',
+        status: 'todo'
     })
+
+    const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleAddTodo(formData.text)
+        dispatch(addTask(formData))
         setFormData({
             text:''
         })
