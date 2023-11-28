@@ -7,7 +7,6 @@ const store = configureStore({
     reducer: {
         counter: counterSlice,
         todo: todoSlice
-    }
 })
 
 export default store

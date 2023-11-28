@@ -7,7 +7,6 @@ import styles from './page.module.css'
 export default function Home() {
 
   const state = useSelector((state)=>state.counter)
-npm
   const dispatch = useDispatch()
 
   return (
