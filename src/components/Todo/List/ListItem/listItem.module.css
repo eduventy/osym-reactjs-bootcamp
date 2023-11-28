@@ -1,0 +1,30 @@
+.listItem {
+    padding:12px;
+    background:#eee;
+    border-radius:8px;
+    display: flex;
+}
+.listItem.done span {
+    text-decoration: line-through;
+}
+.listItem .buttons {
+    margin-left:auto;
+    display: flex;
+    gap:8px;
+}
+
+.deleteButton {
+    background:#be123c;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:4px 8px;
+}
+
+.doneButton {
+    background:#1d4ed8;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:4px 8px;
+}
