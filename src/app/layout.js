@@ -1,4 +1,7 @@
 import ReduxProvider from '@/providers/ReduxProvider'
+import SessionProvider from '@/providers/SessionProvider'
+
+import {Header} from '@/components'
 
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -16,9 +19,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
-          <div className='container'>
-            {children}
-          </div>
+          <SessionProvider>
+            <Header />
+            <div className='container'>
+                {children}
+              </div>
+          </SessionProvider>
         </ReduxProvider>
         </body>
     </html>

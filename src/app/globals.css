@@ -22,3 +22,17 @@ a {
 
 .container {
 }
+
+header {
+  background:#000;
+  display: flex;
+  gap:20px;
+  padding:20px;
+  color:#fff;
+}
+header a {
+  color:#fff;
+}
+header .auth {
+  margin-left:auto;
+}
