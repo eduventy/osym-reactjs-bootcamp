@@ -11,17 +11,25 @@ const authOptions = {
         },
         async authorize(credentials, req) {
           
+
           const url = 'https://kokpit.smartlimon.com/auth/login'
+
           const resp = await fetch(url,{
             method:'POST',
             headers: {
               'Content-Type':'application/json'
             },
-            body: JSON.stringify({
+            body : JSON.stringify({
               email: credentials.username,
               password: credentials.password
             })
-          }).then(resp=>resp.json()).then(resp=>{
+           
+          }).then(resp=>{ 
+            console.log(resp)
+            return resp.json()
+          
+          } ).then(resp=>{
+            console.log(resp)
             if (resp.errors){
               return errors
             } else {

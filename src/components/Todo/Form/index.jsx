@@ -2,7 +2,7 @@
 import {useState} from 'react'
 import { useDispatch } from 'react-redux'
 
-import { addTask } from '@/redux/slice/TodoSlice'
+import { addTask, loadTask } from '@/redux/slice/TodoSlice'
 
 
 import styles from './form.module.css'
@@ -10,17 +10,46 @@ import styles from './form.module.css'
 export default function TodoForm(){
 
     const [formData, setFormData] = useState({
-        text: '',
+        task: '',
         status: 'todo'
     })
 
     const dispatch = useDispatch()
 
+    const getTasks = () => {
+        const url = 'https://kokpit.smartlimon.com/items/bootcamp_todo'
+        fetch(url)
+        .then(resp=>resp.json())
+        .then(resp=>{
+            dispatch(loadTask(resp.data))
+        })
+    }
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addTask(formData))
-        setFormData({
-            text:''
+        
+
+        const url = 'https://kokpit.smartlimon.com/items/bootcamp_todo'
+
+        fetch(url,{
+            method:'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+                task: formData.task
+            })
+        })
+        .then(resp=>resp.json())
+        .then(resp=>{
+            
+            dispatch(addTask(resp.data))
+            //getTasks()
+            setFormData({
+                task:''
+            })
+
         })
     }
 
@@ -28,10 +57,10 @@ export default function TodoForm(){
         <input type={'text'} 
         onChange={(e)=>{
             setFormData({
-                text: e.target.value
+                task: e.target.value
             })
         }}
-        value={formData.text}
+        value={formData.task}
         placeholder={'Type your task'} />
         <button>Add</button>
     </form>

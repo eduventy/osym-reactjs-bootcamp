@@ -10,7 +10,7 @@ export default function Header(){
 
     return <header>
         
-        <Link href={'/'}>Anasayfa</Link>
+        <Link href={'/'}>Anasayfa</Link>g
               <Link href={'/volkan'}>Volkan</Link>
               <Link href={'/eduventy'}>Eduventy</Link>
               <Link href={'/todo'}>Todo</Link>
